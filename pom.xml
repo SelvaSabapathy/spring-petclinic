@@ -138,6 +138,20 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-help-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>show-profiles</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>active-profiles</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>3.1.1</version>
         <dependencies>
@@ -381,6 +395,15 @@
           </plugins>
         </pluginManagement>
       </build>
+    </profile>
+    <profile>
+      <id>h2console</id>
+      <activation>
+        <property>
+          <name>env</name>
+          <value>local</value>
+        </property>
+      </activation>
     </profile>
   </profiles>
 
