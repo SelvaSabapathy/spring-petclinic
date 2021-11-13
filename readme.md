@@ -46,6 +46,18 @@ docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PAS
 
 Further documentation is provided [here](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/mysql/petclinic_db_setup_mysql.txt).
 
+## Database configuration - HW Assignment
+
+To view h2-console during local development, include and active profile _h2console_
+
+```
+mvn clean package -Dskiptests -Denv=local
+
+java -Dspring.profiles.active=h2console -jar ./target/spring-petclinic-2.5.0-SNAPSHOT.jar
+```
+
+Open the following link on browser: http://localhost:8080/h2-console
+
 ## Working with Petclinic in your IDE
 
 ### Prerequisites
