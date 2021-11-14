@@ -31,9 +31,14 @@ pipeline {
         }
       }
     }
+    stage('Package') {
+      steps {
+        echo 'Dockerize the application...'
+      }
+    }
     stage('Push') {
       steps {
-        echo 'Pushing....'
+        echo 'Pushing dockerized application to Artifactory...'
       }
     }
   }
