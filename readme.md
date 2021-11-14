@@ -97,6 +97,8 @@ The following items should be installed in your system:
 
 ## CI/CD Pipeline (Local) - HW Assignment
 
+0) **UPDATE**: This is merged to _dev_ branch, so any reference below for _feature/jenkins_ branch could be replaced by dev in URLs
+
 1) Create a multi-stage single branch pipeline file, Jenkinsfile (as of editing this page, it is available on feature/jenkins branch)
 
 ```
