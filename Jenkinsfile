@@ -1,5 +1,11 @@
 pipeline {
 
+  environment {
+    registry = "selvasabapathy/petclinic"
+    registryCredential = 'dockerhub_selvasabapathy'
+    dockerImage = ''
+  }
+
   agent any
 
   stages {
@@ -19,6 +25,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.8.3-openjdk-11'
+          args '-v $HOME/.m2:/root/.m2'
         }
       }
       steps {
@@ -31,14 +38,19 @@ pipeline {
         }
       }
     }
-    stage('Package') {
-      steps {
-        echo 'Dockerize the application...'
-      }
-    }
     stage('Push') {
       steps {
-        echo 'Pushing dockerized application to Artifactory...'
+        echo 'Dockerize and push the application...'
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          docker.withRegistry( '', registryCredential ) { dockerImage.push() }
+        }
+      }
+      post {
+        success {
+          echo 'Remove the docker image that was pushed...'
+          sh "docker rmi $registry:$BUILD_NUMBER"
+        }
       }
     }
   }

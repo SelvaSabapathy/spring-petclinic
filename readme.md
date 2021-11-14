@@ -143,6 +143,10 @@ For this to work for a locally running Jenkins, use a service that creates a sec
 https://dashboard.ngrok.com/get-started/setup
 ```
 
+5) Add docker registry user credential for Jenkins pipeline to push to the registry (Docker Hub)
+
+![img.png](readme.images/jenkins_dockerhub.png)
+
 ## Looking for something in particular?
 
 |Spring Boot Configuration | Class or Java property files  |
