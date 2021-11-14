@@ -10,6 +10,7 @@ services:
     build:
       context: ./jenkins
       dockerfile: Dockerfile
+    image: selva-jenkins
     container_name: jfrog-jenkins
     networks:
       - default
@@ -18,13 +19,16 @@ services:
       - JENKINS_ADMIN_ID=admin
       - JENKINS_ADMIN_PASSWORD=password
     ports:
-      - 8081:8080
+      - 8080:8080
       - 5000:5000
     volumes:
       - ../jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
   mysql:
-    image: mysql:5.7
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: selva-mysql
     container_name: jfrog-mysql
     networks:
       - default

@@ -72,6 +72,7 @@ snakeyaml-api:1.29.1
 ssh-credentials:1.19
 ssh-slaves:1.33.0
 sshd:3.1.0
+strict-crumb-issuer:2.1.0
 structs:1.23
 timestamper:1.13
 token-macro:267.vcdaea6462991
