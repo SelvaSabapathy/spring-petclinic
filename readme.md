@@ -95,6 +95,51 @@ The following items should be installed in your system:
 
     Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
+## CI/CD Pipeline (Local) - HW Assignment
+
+1) Create a multi-stage single branch pipeline file, Jenkinsfile (as of editing this page, it is available on feature/jenkins branch)
+
+```
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/Jenkinsfile
+```
+
+2) Create a Jenkins docker image off a base image, and run it locally. Include plugins to be added as well.
+
+```
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/docker-compose.yml
+```
+
+``` 
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/Dockerfile
+```
+
+``` 
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/plugins.txt
+```
+
+``` 
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/casc.yml
+```
+
+2) Create a pipeline manually and link it to the Jenkinsfile in GitHub, and enable SCM triggered pipeline run.
+
+![img.png](readme.images/pipeline.png)
+
+3) Create a MySQL docker image off a base image, and use it local development with non-default Spring Boot active profile. This is a stretch goal.
+
+``` 
+https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/mysql/Dockerfile
+```
+
+4) Setup a Webhook in GitHub repo and link it to the above Jenkins pipeline
+
+![img.png](readme.images/webhook.png)
+
+For this to work for a locally running Jenkins, use a service that creates a secure tunnel between from a public endpoint to a locally running web service. One such service is ngrok.
+
+``` 
+https://dashboard.ngrok.com/get-started/setup
+```
 
 ## Looking for something in particular?
 

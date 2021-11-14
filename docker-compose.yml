@@ -1,12 +1,45 @@
-mysql:
-  image: mysql:5.7
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=
-    - MYSQL_ALLOW_EMPTY_PASSWORD=true
-    - MYSQL_USER=petclinic
-    - MYSQL_PASSWORD=petclinic
-    - MYSQL_DATABASE=petclinic
-  volumes:
-    - "./conf.d:/etc/mysql/conf.d:ro"
+version: "3.9"
+
+networks:
+  jfrog-net:
+    name: jfrog-net
+    external: false
+
+services:
+  jenkins:
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    image: selva-jenkins
+    container_name: jfrog-jenkins
+    networks:
+      - default
+      - jfrog-net
+    environment:
+      - JENKINS_ADMIN_ID=admin
+      - JENKINS_ADMIN_PASSWORD=password
+    ports:
+      - 8080:8080
+      - 5000:5000
+    volumes:
+      - ../jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: selva-mysql
+    container_name: jfrog-mysql
+    networks:
+      - default
+      - jfrog-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=petclinic
+      - MYSQL_PASSWORD=petclinic
+      - MYSQL_DATABASE=petclinic
+    ports:
+      - 3306:3306
+    volumes:
+      - "../mysql-data/conf.d:/etc/mysql/conf.d:ro"
