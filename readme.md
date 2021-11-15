@@ -151,6 +151,14 @@ https://dashboard.ngrok.com/get-started/setup
 
 ![img.png](readme.images/docker_hub.png)
 
+7) Add docker registry user credentials for Jenkins pipeline to push to the registry (Artifactory Registry)
+
+![img.png](readme.images/artifactory_registry.png)
+
+8) Configure JFrog instance in Jenkins
+
+![img.png](readme.images/jfrog_instance.png)
+
 ## Looking for something in particular?
 
 |Spring Boot Configuration | Class or Java property files  |
