@@ -97,30 +97,30 @@ The following items should be installed in your system:
 
 ## CI/CD Pipeline (Local) - HW Assignment
 
-0) **UPDATE**: This is merged to _dev_ branch, so any reference below for _feature/jenkins_ branch could be replaced by dev in URLs
+0) **UPDATE**: This is merged to from _feature/jenkins_ to _dev_ branch, so any reference below can use _feature/jenkins_ branch instead of _dev_ in URLs to go back in history.
 
 1) Create a multi-stage single branch pipeline file, Jenkinsfile (as of editing this page, it is available on feature/jenkins branch)
 
 ```
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/Jenkinsfile
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/Jenkinsfile
 ```
 
 2) Create a Jenkins docker image off a base image, and run it locally. Include plugins to be added as well.
 
 ```
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/docker-compose.yml
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/docker-compose.yml
 ```
 
 ``` 
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/Dockerfile
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/jenkins/Dockerfile
 ```
 
 ``` 
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/plugins.txt
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/jenkins/plugins.txt
 ```
 
 ``` 
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/casc.yml
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/jenkins/casc.yml
 ```
 
 2) Create a pipeline manually and link it to the Jenkinsfile in GitHub, and enable SCM triggered pipeline run.
@@ -130,7 +130,7 @@ https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/jenkins/
 3) Create a MySQL docker image off a base image, and use it local development with non-default Spring Boot active profile. This is a stretch goal.
 
 ``` 
-https://github.com/SelvaSabapathy/spring-petclinic/blob/feature/jenkins/mysql/Dockerfile
+https://github.com/SelvaSabapathy/spring-petclinic/blob/dev/mysql/Dockerfile
 ```
 
 4) Setup a Webhook in GitHub repo and link it to the above Jenkins pipeline
@@ -146,6 +146,10 @@ https://dashboard.ngrok.com/get-started/setup
 5) Add docker registry user credential for Jenkins pipeline to push to the registry (Docker Hub)
 
 ![img.png](readme.images/jenkins_dockerhub.png)
+
+6) Jenkins pipeline pushed images in Docker Hub
+
+![img.png](readme.images/docker_hub.png)
 
 ## Looking for something in particular?
 
