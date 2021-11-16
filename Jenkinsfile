@@ -9,6 +9,11 @@ pipeline {
   agent any
 
   stages {
+    stage('Info') {
+      steps {
+        sh 'printenv'
+      }
+    }
     stage('Build') {
       agent {
         docker {
@@ -41,15 +46,17 @@ pipeline {
     stage('Push') {
       steps {
         echo 'Dockerize and push the application...'
+        sh 'cd $WORKSPACE'
+        sh './mvnw -DskipTests clean package'
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$JOB_NAME-$BUILD_NUMBER"
           docker.withRegistry( '', registryCredential ) { dockerImage.push() }
         }
       }
       post {
         success {
           echo 'Remove the docker image that was pushed...'
-          sh "docker rmi $registry:$BUILD_NUMBER"
+          sh "docker rmi $registry:$JOB_NAME-$BUILD_NUMBER"
         }
       }
     }
